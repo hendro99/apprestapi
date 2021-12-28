@@ -7,5 +7,8 @@ module.exports = function (app) {
 
     app.route('/tampil')
         .get(jsonku.tampilbhn);
+
+    app.route('/tampil/:id')
+        .get(jsonku.editbhn);
 }
 

@@ -20,3 +20,19 @@ exports.tampilbhn = function (req, res) {
         }
     });
 };
+
+
+//menampilkan data id
+exports.editbhn = function (req, res) {
+    let id = req.params.id;
+    connection.query('select * from bhn where no_id = ?', [id],
+        function (error, rows, fields) {
+            if (error) {
+                connection.log(error);
+            } else {
+
+                response.ok(rows, res);
+
+            }
+        });
+}
