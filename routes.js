@@ -7,10 +7,13 @@ module.exports = function (app) {
 
     app.route('/tampil')
         .get(jsonku.tampilbhn);
-
     app.route('/tampil/:id')
         .get(jsonku.editbhn);
     app.route('/tambah')
         .post(jsonku.tambahbhn);
+    app.route('/ubah')
+        .put(jsonku.ubahbhn);
+    app.route('/hapus')
+        .delete(jsonku.hapusbhn);
 }
 
