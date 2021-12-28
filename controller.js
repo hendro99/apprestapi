@@ -36,3 +36,25 @@ exports.editbhn = function (req, res) {
             }
         });
 }
+
+
+//tambah data bahan
+
+exports.tambahbhn = function (req, res) {
+    var kd_bhn = req.body.kd_bhn;
+    var na_bhn = req.body.na_bhn;
+    var satuan = req.body.satuan;
+
+    connection.query('insert into bhn (kd_bhn,na_bhn,satuan) values (?,?,?)', [kd_bhn, na_bhn, satuan],
+        function (error, rows, fields) {
+            if (error) {
+                connection.log(error);
+            } else {
+
+                response.ok('Berhasil Tembah Data', res);
+
+            }
+        });
+
+
+};
