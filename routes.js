@@ -23,5 +23,7 @@ module.exports = function (app) {
         .post(jsonku.ubahbrg);
     app.route('/hapusbrg')
         .post(jsonku.hapusbrg);
+    app.route('/tampilpo')
+        .post(jsonku.tampilpo);
 }
 

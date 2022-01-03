@@ -1,3 +1,4 @@
+
 'use strict';
 
 var response = require('./res');
@@ -105,7 +106,7 @@ exports.hapusbhn = function (req, res) {
 
 
 exports.tampilbrg = function (req, res) {
-    var cari = req.params.cari;
+    var cari = req.body.cari;
     if ([cari] != '') {
         connection.query("select * from brg where kd_brg like '%?%'  ", [cari],
             function (error, rows, fields) {
@@ -129,7 +130,7 @@ exports.tampilbrg = function (req, res) {
                 }
             });
 
-    }
+    };
 };
 
 exports.tambahbrg = function (req, res) {
@@ -193,4 +194,44 @@ exports.hapusbrg = function (req, res) {
         });
 
 
+};
+
+
+
+exports.tampilpo = function (req, res) {
+    var cari = req.body.cari;
+    var supplier = req.body.supplier;
+    var tgla = req.body.tgla;
+    var tglb = req.body.tglb;
+    console.log('xx');
+    console.log(tgla);
+    console.log(tglb);
+    console.log(supplier);
+    if ([cari] != '') {
+        connection.query(" select * from po "
+            , [tgla, tglb],
+            function (error, rows, fields) {
+                if (error) {
+
+                    connection.log(error);
+                } else {
+
+                    response.ok(rows, res);
+
+                }
+            });
+    } else {
+        connection.query(" select * from po where tgl between ? and ? "
+            , [tgla, tglb],
+            function (error, rows, fields) {
+                if (error) {
+                    connection.log(error);
+                } else {
+
+                    response.ok(rows, res);
+
+                }
+            });
+
+    };
 };
